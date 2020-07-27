@@ -31,7 +31,7 @@ connection.on("error", (err) => {
 });
 
 app.use(apiRoute);
-// app.use(viewRoute);
+app.use(viewRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
