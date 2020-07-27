@@ -21,7 +21,7 @@ const connection = mongoose.connection;
 
 connection.on("connected", () => {
   db.Workout.find({}).then((workouts) => {
-    console.log(JSON.stringify(workouts, 0, 2));
+    // console.log(JSON.stringify(workouts, 0, 2));
   });
   console.log("Mongoose successfully connected.");
 });
