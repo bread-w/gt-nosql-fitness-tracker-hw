@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const app = express();
 const apiRoute = require("./routes/apiRoute");
 const viewRoute = require("./routes/viewRoute");
+const db = require("./models");
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,6 +20,9 @@ mongoose.connect(process.env.MONGOD_URI || "mongodb://localhost/workout", {
 const connection = mongoose.connection;
 
 connection.on("connected", () => {
+  db.Workout.find({}).then((workouts) => {
+    console.log(JSON.stringify(workouts, 0, 2));
+  });
   console.log("Mongoose successfully connected.");
 });
 
@@ -27,7 +31,7 @@ connection.on("error", (err) => {
 });
 
 app.use(apiRoute);
-app.use(viewRoute);
+// app.use(viewRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
