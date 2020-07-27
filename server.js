@@ -16,6 +16,10 @@ mongoose.connect(process.env.MONGOD_URI || "mongodb://localhost/workout", {
   useUnifiedTopology: true,
 });
 
+var MONGOD_URI = process.env.MONGOD.URI || "mongodb://localHeadlines";
+
+mongoose.connect(MONGODB_URI);
+
 const connection = mongoose.connection;
 
 connection.on("connected", () => {
