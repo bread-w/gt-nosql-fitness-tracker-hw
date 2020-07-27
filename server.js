@@ -2,12 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const apiRoute = require("./routes/apiRoute");
-const viewRoute = require("./routes/viewRoute");
 const db = require("./models");
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }, { useUnifiedTopology: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
@@ -31,7 +30,7 @@ connection.on("error", (err) => {
 });
 
 app.use(apiRoute);
-app.use(viewRoute);
+require("./routes/viewRoute")(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
