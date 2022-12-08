@@ -4,7 +4,7 @@
   "description": "NoSQL Fitness Tracker",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mongoose": "^5.9.25",
     "path": "^0.12.7"
   },
